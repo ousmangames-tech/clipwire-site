@@ -1,0 +1,48 @@
+:root {
+  --bg: #f7f6f2;
+  --fg: #1c1b19;
+  --muted: #5f5c55;
+  --line: #dedad0;
+  --accent: #0b6e4f;
+  --card: #ffffff;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141412;
+    --fg: #ecebe6;
+    --muted: #a9a59b;
+    --line: #2e2d29;
+    --accent: #5fd3a6;
+    --card: #1c1b18;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 48px 16px 64px; }
+header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 32px; }
+.brand { font-weight: 700; font-size: 20px; letter-spacing: -0.01em; color: var(--fg); text-decoration: none; }
+.brand span { color: var(--accent); }
+nav a { color: var(--muted); text-decoration: none; margin-left: 16px; font-size: 15px; }
+nav a:first-child { margin-left: 0; }
+nav a:hover, nav a[aria-current] { color: var(--fg); }
+h1 { font-size: 34px; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 8px; }
+h2 { font-size: 20px; margin: 32px 0 8px; }
+p, li { color: var(--fg); }
+.lede { font-size: 19px; color: var(--muted); margin: 0 0 24px; }
+.meta { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+a { color: var(--accent); }
+ul { padding-left: 22px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+code, .url { font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; word-break: break-all; }
+.url { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin: 12px 0; }
+button { font: inherit; font-size: 15px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent);
+  background: var(--accent); color: var(--bg); cursor: pointer; }
+footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }

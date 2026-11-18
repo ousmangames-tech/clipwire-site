@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer">
+  <title>Clipwire Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="./">Clip<span>wire</span></a>
+  </header>
+
+  <h1 id="h">Almost done</h1>
+  <p class="lede" id="msg">Copy this whole address and paste it into the Clipwire terminal where it asks for the URL.</p>
+  <code class="url" id="url"></code>
+  <button id="copy" type="button">Copy address</button>
+  <p class="meta">This page sends nothing anywhere. The login code stays in your browser until you paste it. It expires within minutes.</p>
+</div>
+<script>
+  (function () {
+    var href = window.location.href;
+    var q = new URLSearchParams(window.location.search);
+    document.getElementById("url").textContent = href;
+    if (q.get("error")) {
+      document.getElementById("h").textContent = "Login was not completed";
+      document.getElementById("msg").textContent = "The platform returned: " + q.get("error") +
+        (q.get("error_description") ? " (" + q.get("error_description") + ")" : "") + ". Start the connect command again.";
+    } else if (!q.get("code")) {
+      document.getElementById("h").textContent = "Nothing to copy";
+      document.getElementById("msg").textContent = "Open this page by logging in from the Clipwire connect command.";
+    }
+    document.getElementById("copy").addEventListener("click", function () {
+      var b = this;
+      navigator.clipboard.writeText(href).then(function () { b.textContent = "Copied"; },
+        function () { b.textContent = "Select the address above and copy it"; });
+    });
+  })();
+</script>
+</body>
+</html>
